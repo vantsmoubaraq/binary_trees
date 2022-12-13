@@ -14,12 +14,7 @@ binary_tree_t *binary_tree_insert_left(binary_tree_t *parent, int value)
 	if (!parent)
 		return (NULL);
 
-	new = malloc(sizeof(binary_tree_t));
-
-	new->parent = parent;
-	new->left = NULL;
-	new->right = NULL;
-	new->n = value;
+	new = binary_tree_node(parent, value);
 
 	if (new == NULL)
 		return (NULL);
@@ -29,7 +24,7 @@ binary_tree_t *binary_tree_insert_left(binary_tree_t *parent, int value)
 
 	if (old_left)
 	{
-		parent->left = new;
+		old_left->parent = new;
 		new->left = old_left;
 	}
 
