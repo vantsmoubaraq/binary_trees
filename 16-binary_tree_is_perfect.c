@@ -26,13 +26,16 @@ int binary_tree_is_perfect(const binary_tree_t *tree)
 	if (!tree)
 		return (0);
 
+	if (!tree->right && !tree->left)
+		return (1);
+
 	size_left = size(tree->left);
 	size_right = size(tree->right);
 
 	compare = size_left - size_right;
 
-	if (!compare && !tree->right && !tree->left)
+	if (compare == 0)
 		return (1);
-	else
-		return (0);
+
+	return (0);
 }
